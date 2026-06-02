@@ -1,13 +1,17 @@
-name: first-pipeline
+name: first-workflow
 on: push
 jobs:
-  echo-hello:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Echo Hello
-        run: echo "Hello, World!"
-  echo-goodbye:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Echo Goodbye
-        run: echo "Goodbye, World!"      
+    echo-bye:
+        runs-on: ubuntu-latest
+        steps:
+             - name: say bye world
+               run: |
+                     echo "Bye World"
+                     exit 1
+             - name: say bye world again
+               run: echo "Bye World Again" 
+    echo-hello:
+        runs-on: ubuntu-latest
+        steps:
+            - name: say hello world
+              run: echo "Hello World"    
