@@ -1,0 +1,10 @@
+name: runners
+on:
+  push
+jobs:
+  print-ubuntu:
+    runs-on: ubuntu-latest
+    steps:
+      - name: show-os
+      - run: echo "This is running on Ubuntu"
+      - run: echo "RUNNER OS: $RUNNER_OS"
