@@ -1,8 +1,12 @@
-name: workflow-events
-on: pull_request
+name: checkout
+on: 
+  push
 jobs:
-  echo:
+  build:
     runs-on: ubuntu-latest
-    steps:
-      - name: show the trigger
-        run: echo "triggred using a(n) ${{github.event_name}} event"
+    steps: 
+      - name: checkout code
+        run: |
+          git clone https://github.com/Softwaresingham/SS_GITHUB_ACTIONS.git
+          cd SS_GITHUB_ACTIONS
+          ls -lrt
