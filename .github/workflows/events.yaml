@@ -5,5 +5,5 @@ jobs:
   java:
     runs-on: ubuntu-latest
     steps: 
-      - name: Setup Java JDK
-        uses: actions/setup-java@v4
+      - name: list of softwares
+        run: apt list --installed
