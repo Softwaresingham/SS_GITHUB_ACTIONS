@@ -1,15 +1,16 @@
-name: Context Demo
+name: Branch Based Deployment
 on:
   push
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Print Context Variables
-        run: |
-          echo "Actor      : ${{ github.actor }}"
-          echo "Repository : ${{ github.repository }}"
-          echo "Branch     : ${{ github.ref }}"
-          echo "Commit ID  : ${{ github.sha }}"
-          echo "Workflow   : ${{ github.workflow }}"
-          echo "Event      : ${{ github.event_name }}"
+      - name: Build Application
+        run: echo "Building Application"
+  deploy:
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy Application
+        run: echo "Deploying to Production"
