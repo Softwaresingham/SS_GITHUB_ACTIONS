@@ -1,13 +1,16 @@
-name: workflow-events
-on: 
-  push:
-  pull_request: 
-  workflow_dispatch: 
-  schedule:
-    - cron: '0 0 * * *' # every day at midnight
+name: Branch Based Deployment
+on:
+  push
 jobs:
-  echo:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: show the trigger
-        run: echo "triggred using a(n) ${{github.event_name}} event"
+      - name: Build Application
+        run: echo "Building Application"
+  deploy:
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy Application
+        run: echo "Deploying to Production"
