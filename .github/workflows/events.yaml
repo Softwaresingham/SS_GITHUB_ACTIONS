@@ -1,8 +1,15 @@
-name: Demo
+name: Context Demo
 on:
   push
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "${{ github.actor }}"
+      - name: Print Context Variables
+        run: |
+          echo "Actor      : ${{ github.actor }}"
+          echo "Repository : ${{ github.repository }}"
+          echo "Branch     : ${{ github.ref }}"
+          echo "Commit ID  : ${{ github.sha }}"
+          echo "Workflow   : ${{ github.workflow }}"
+          echo "Event      : ${{ github.event_name }}"
